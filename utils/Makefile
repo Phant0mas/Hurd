@@ -34,7 +34,7 @@ SRCS = shd.c ps.c settrans.c syncfs.c showtrans.c addauth.c rmauth.c \
 	nullauth.c match-options.c msgids.c rpcscan.c
 
 OBJS = $(filter-out %.sh,$(SRCS:.c=.o))
-HURDLIBS = ps ihash store fshelp ports ftpconn shouldbeinlibc
+HURDLIBS = ps ihash store fshelp ports ftpconn shouldbeinlibc hurdutil
 LDLIBS += -lpthread
 login-LDLIBS = -lutil -lcrypt
 addauth-LDLIBS = -lcrypt
@@ -60,7 +60,7 @@ storeinfo storecat storeread: ../libstore/libstore.a
 ftpcp ftpdir: ../libftpconn/libftpconn.a
 mount umount: ../libihash/libihash.a
 settrans: ../libfshelp/libfshelp.a ../libihash/libihash.a \
-	../libports/libports.a
+	../libports/libports.a ../libhurdutil/libhurdutil.a
 ps w ids settrans syncfs showtrans fsysopts storeinfo login vmstat portinfo \
   devprobe vminfo addauth rmauth setauth unsu ftpcp ftpdir storeread \
   storecat msgport mount umount nullauth rpctrace: \
